@@ -31,11 +31,12 @@ public class ItemData : ScriptableObject
     public ItemType type;
     public Sprite icon;
     public GameObject dropPrefab;
-
+    
     [Header("Stacking")]
     public bool canStack;
     public int maxStackAmount;
 
     [Header("Consumable")]
+    public int time;
     public ItemDataConsumable[] consumables;
 }

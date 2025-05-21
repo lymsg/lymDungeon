@@ -20,6 +20,10 @@ public class PlayerCondition : MonoBehaviour
             Die();
         }
     }
+    public void StartInfiniteStamina(float time)
+    {
+        StartCoroutine(InfiniteStamina(time));
+    }
 
     public void Heal(float amount)
     {
@@ -40,5 +44,17 @@ public class PlayerCondition : MonoBehaviour
         }
         stamina.Subtract(amount);
         return true;
+    }
+
+    private IEnumerator InfiniteStamina(float time)
+    {
+        float startTime = 0f;
+        
+        while (startTime <= time)
+        {
+            startTime += Time.deltaTime;
+            stamina.infinite();
+            yield return null;
+        }
     }
 }

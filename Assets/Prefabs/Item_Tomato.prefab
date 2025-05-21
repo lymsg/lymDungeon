@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 571555080135880258}
   - component: {fileID: 7265679627969640399}
-  m_Layer: 0
+  - component: {fileID: 6683638549591583956}
+  m_Layer: 7
   m_Name: Item_Tomato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,6 +69,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &6683638549591583956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267922832555356735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53164a4baa7ff1b409ddb3262638da77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 184bb977734b5aa43bde33638e9895c3, type: 2}
 --- !u!1001 &4293705728376991656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -119,6 +133,10 @@ PrefabInstance:
     - target: {fileID: 3388152910422019967, guid: e46a842bf3694a84cadd43bb62ba0348, type: 3}
       propertyPath: m_Name
       value: Tomato
+      objectReference: {fileID: 0}
+    - target: {fileID: 3388152910422019967, guid: e46a842bf3694a84cadd43bb62ba0348, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

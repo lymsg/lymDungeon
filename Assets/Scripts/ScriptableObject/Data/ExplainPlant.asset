@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExplainPlant
   m_EditorClassIdentifier: 
   displayName: "\uB9D0\uD558\uB294 \uC2DD\uBB3C"
-  description: "\uC774\uB3D9\uC740 wasd \uC810\uD504\uB294 space.."
+  description: "\uC774\uB3D9\uC740 wasd \uC810\uD504\uB294 space\uC785\uB2C8\uB2E4"
   type: 0
   icon: {fileID: 0}
   dropPrefab: {fileID: 0}
