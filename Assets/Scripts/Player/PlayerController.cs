@@ -25,11 +25,11 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canLook = true;
 
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
     void Start()
@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     {
         if(context.phase == InputActionPhase.Started && IsGrounded() && CharacterManager.Instance.Player.condition.useStamina(jumpStamina))
         {
-            rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+            rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
     }
 
@@ -79,9 +79,9 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
         dir *= moveSpeed;
-        dir.y = rigidbody.velocity.y;
+        dir.y = rb.velocity.y;
 
-        rigidbody.velocity = dir;
+        rb.velocity = dir;
     }
 
     void CameraLook()
@@ -118,5 +118,10 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
+    }
+
+    public void ForceJump(float forceJumpPower)
+    {
+        rb.AddForce(Vector2.up * forceJumpPower, ForceMode.Impulse);
     }
 }
