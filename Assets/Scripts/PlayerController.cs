@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public float lookSensitivity;
 
     private Vector2 mouseDelta;
+    [Header("Jump")]
+    public float jumpStamina;
 
     [HideInInspector]
     public bool canLook = true;
@@ -67,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
-        if(context.phase == InputActionPhase.Started && IsGrounded())
+        if(context.phase == InputActionPhase.Started && IsGrounded() && CharacterManager.Instance.Player.condition.useStamina(jumpStamina))
         {
             rigidbody.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
         }
