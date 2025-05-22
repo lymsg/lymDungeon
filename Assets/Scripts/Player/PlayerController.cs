@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
     private float camCurXRot;
     public float lookSensitivity;
     private Vector2 mouseDelta;
+    private bool isThirdPerson = false;
+    private Vector3 firstPersonView = new Vector3(0f,0f,0f);
+    private Vector3 thirdPersonView = new Vector3(0f, 0.17f, -1.7f);
+    private Transform mainCamera;
     
     [Header("Jump")]
     public float jumpStamina;
@@ -41,6 +45,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        mainCamera = transform.Find("Capsule/CameraContainer/Main Camera");
     }
 
     void Update()
@@ -105,6 +110,17 @@ public class PlayerController : MonoBehaviour
         else if (context.phase == InputActionPhase.Canceled)
         {
             isRunning = false;
+        }
+    }
+
+    public void OnSwitchInput(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            Debug.Log("Switch");
+            isThirdPerson = !isThirdPerson;
+            Vector3 targetView = isThirdPerson ? thirdPersonView : firstPersonView;
+            mainCamera.localPosition = targetView;
         }
     }
 
