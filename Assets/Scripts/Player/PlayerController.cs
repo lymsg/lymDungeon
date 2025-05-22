@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,11 +18,16 @@ public class PlayerController : MonoBehaviour
     public float maxXLook;
     private float camCurXRot;
     public float lookSensitivity;
-
     private Vector2 mouseDelta;
+    
     [Header("Jump")]
     public float jumpStamina;
 
+    [Header("Run")]
+    public float runSpeed;
+    private bool isRunning;
+    public float runStamina;
+    
     [HideInInspector]
     public bool canLook = true;
 
@@ -35,6 +41,21 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void Update()
+    {
+        if (isRunning)
+        {
+            if (curMovementInput.magnitude > 0f)
+            {
+                bool success = CharacterManager.Instance.Player.condition.useStamina(runStamina);
+                if (!success)
+                {
+                    isRunning = false;
+                }
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -75,10 +96,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void OnRunInput(InputAction.CallbackContext context)
+    {
+        if(context.phase == InputActionPhase.Performed && IsGrounded())
+        {
+            isRunning = true;
+        }
+        else if (context.phase == InputActionPhase.Canceled)
+        {
+            isRunning = false;
+        }
+    }
+
     private void Move()
     {
+        float curSpeed = isRunning ? runSpeed : moveSpeed;
+        
         Vector3 dir = transform.forward * curMovementInput.y + transform.right * curMovementInput.x;
-        dir *= moveSpeed;
+        dir *= curSpeed;
         dir.y = rb.velocity.y;
 
         rb.velocity = dir;

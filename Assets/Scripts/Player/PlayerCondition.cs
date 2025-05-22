@@ -56,5 +56,7 @@ public class PlayerCondition : MonoBehaviour
             stamina.infinite();
             yield return null;
         }
+
+        stamina.uiBar.color = new Color32(66, 117, 5, 255);
     }
 }

@@ -34,6 +34,7 @@ public class Condition : MonoBehaviour
     public void infinite()
     {
         curValue = maxValue;
+        uiBar.color=new Color32(255, 233, 90, 255);
     }
     public float GetPercentage()
     {
