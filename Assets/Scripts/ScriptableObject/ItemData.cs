@@ -6,12 +6,14 @@ public enum ItemType
 {
     Resource,
     Equipable,
-    Consumable
+    Consumable,
+    Nothing
 }
 
 public enum ConsumableType
 {
-    Hunger,
+    Stamina,
+    DoubleJump,
     Health
 }
 

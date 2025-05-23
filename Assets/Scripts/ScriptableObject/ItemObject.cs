@@ -20,22 +20,24 @@ public class ItemObject : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        //Player 스크립트 먼저 수정
-        if (data.type == ItemType.Consumable )
+    //     if (data.type == ItemType.Consumable )
+    //     {
+    //         switch (data.displayName)
+    //         {
+    //             case "초록토마토":
+    //                 CharacterManager.Instance.Player.condition.StartInfiniteStamina(data.time);
+    //                 break;
+				// case "사과":
+    //                 CharacterManager.Instance.Player.controller.StartOnDoubleJump(data.time);
+    //                 break;
+    //                 
+    //         }
+    //     }
+        if (data.type != ItemType.Nothing)
         {
-            switch (data.displayName)
-            {
-                case "초록토마토":
-                    CharacterManager.Instance.Player.condition.StartInfiniteStamina(data.time);
-                    break;
-				case "사과":
-                    CharacterManager.Instance.Player.controller.StartOnDoubleJump(data.time);
-                    break;
-                    
-            }
+            CharacterManager.Instance.Player.itemData = data;
+            CharacterManager.Instance.Player.addItem?.Invoke();
+            Destroy(gameObject);
         }
-        CharacterManager.Instance.Player.itemData = data;
-        CharacterManager.Instance.Player.addItem?.Invoke();
-        Destroy(gameObject);
     }
 }

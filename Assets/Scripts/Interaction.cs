@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Interaction : MonoBehaviour
 {
@@ -15,13 +16,15 @@ public class Interaction : MonoBehaviour
     private IInteractable curInteractable;
 
     public GameObject prompt;
-    private TextMeshProUGUI promptText;
+    [SerializeField]private TextMeshProUGUI promptText;
+    public Image keep;
     private Camera camera;
 
     void Start()
     {
         camera = Camera.main;
         promptText = prompt.GetComponentInChildren<TextMeshProUGUI>();
+        
     }
 
     void Update()
@@ -39,7 +42,7 @@ public class Interaction : MonoBehaviour
                 {
                     curInteractGameObject = hit.collider.gameObject;
                     curInteractable = hit.collider.GetComponent<IInteractable>();
-                    SetPromptText();
+                    SetPromptText(layerMask);
                 }
             }
             else
@@ -47,14 +50,19 @@ public class Interaction : MonoBehaviour
                 curInteractGameObject = null;
                 curInteractable = null;
                 prompt.gameObject.SetActive(false);
+                keep.gameObject.SetActive(false);
             }
         }
     }
 
-    private void SetPromptText()
+    private void SetPromptText(LayerMask layerMask)
     {
         prompt.gameObject.SetActive(true);
         promptText.text = curInteractable.GetInteractPrompt();
+        if (curInteractGameObject.layer == LayerMask.NameToLayer("Interactable")) 
+        {
+            keep.gameObject.SetActive(true);
+        }
     }
 
     public void OnInteractInput(InputAction.CallbackContext context)
@@ -64,7 +72,6 @@ public class Interaction : MonoBehaviour
             curInteractable.OnInteract();
             curInteractGameObject = null;
             curInteractable = null;
-            promptText.gameObject.SetActive(false);
         }
     }
 }

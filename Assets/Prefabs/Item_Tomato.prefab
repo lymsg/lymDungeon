@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 571555080135880258}
   - component: {fileID: 6683638549591583956}
   - component: {fileID: 2312966137204932135}
+  - component: {fileID: 2380825127818900233}
   m_Layer: 7
   m_Name: Item_Tomato
   m_TagString: Untagged
@@ -68,6 +69,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.1470561, y: 0.093263865, z: 0.13155746}
   m_Center: {x: 0.0058186054, y: -0.0006147623, z: 0.0033512115}
+--- !u!54 &2380825127818900233
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267922832555356735}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!1001 &4293705728376991656
 PrefabInstance:
   m_ObjectHideFlags: 0

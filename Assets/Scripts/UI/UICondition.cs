@@ -1,14 +1,27 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 
-    public class UICondition : MonoBehaviour
+public class UICondition : MonoBehaviour
     {
         public Condition health;
         public Condition stamina;
-
+        public Image doubleJumpIcon;
         private void Start()
         {
             CharacterManager.Instance.Player.condition.uiCondition = this;
+        }
+
+        void Update()
+        {
+            if (CharacterManager.Instance.Player.controller.doubleJumpAble)
+            {
+                doubleJumpIcon.gameObject.SetActive(true);
+            }
+            else
+            {
+                doubleJumpIcon.gameObject.SetActive(false);
+            }
         }
     }
 

@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     
     [HideInInspector]
     public bool canLook = true;
-
+    public Action bag;
     private Rigidbody rb;
 
     private void Awake()
@@ -68,7 +68,8 @@ public class PlayerController : MonoBehaviour
         {
             if (curMovementInput.magnitude > 0f)
             {
-                bool success = CharacterManager.Instance.Player.condition.useStamina(runStamina);
+                float staminaToConsume = runStamina * Time.deltaTime;     //업뎃문에선 프레임시간 상관해야한다
+                bool success = CharacterManager.Instance.Player.condition.useStamina(staminaToConsume);
                 if (!success)
                 {
                     isRunning = false;
@@ -78,7 +79,8 @@ public class PlayerController : MonoBehaviour
 
         if (ClimbingMode)
         {
-            bool success = CharacterManager.Instance.Player.condition.useStamina(climbingStamina);
+            float staminaToConsume = climbingStamina * Time.deltaTime;
+            bool success = CharacterManager.Instance.Player.condition.useStamina(staminaToConsume);
             if (!success)
             {
                 ExitClimbigMode();
@@ -267,8 +269,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ToggleCursor(bool toggle)
+    public void OnInventoryButton(InputAction.CallbackContext callbackContext)
     {
+        if (callbackContext.phase == InputActionPhase.Started)
+        {
+            bag?.Invoke();
+            ToggleCursor();
+        }
+    }
+    public void ToggleCursor()
+    {
+        bool toggle = Cursor.lockState == CursorLockMode.Locked;
         Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
         canLook = !toggle;
     }

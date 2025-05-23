@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Tomato
   m_EditorClassIdentifier: 
   displayName: "\uCD08\uB85D\uD1A0\uB9C8\uD1A0"
-  description: "\uC77C\uC2DC\uC801\uC73C\uB85C \uC2A4\uD0DC\uBBF8\uB098\uAC00 \uB2F3\uC9C0\uC54A\uC2B5\uB2C8\uB2E4.         
-    \uBA39\uAE30 [E]"
+  description: "5\uCD08\uB3D9\uC548 \uC2A4\uD0DC\uBBF8\uB098\uAC00 \uB2F3\uC9C0\uC54A\uC2B5\uB2C8\uB2E4."
   type: 2
-  icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
+  icon: {fileID: 21300000, guid: 51fbf239fbdf54c47a2de758096f5841, type: 3}
+  dropPrefab: {fileID: 1267922832555356735, guid: 4134beda9f657a043a8cd96cd0719cfa, type: 3}
   canStack: 1
   maxStackAmount: 3
   time: 5
-  consumables: []
+  consumables:
+  - type: 0
+    value: 5

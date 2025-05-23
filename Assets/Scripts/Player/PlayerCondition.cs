@@ -15,10 +15,10 @@ public class PlayerCondition : MonoBehaviour
     {
         stamina.Add(stamina.passiveValue * Time.deltaTime);
 
-        if(health.curValue < 0f)
-        {
-            Die();
-        }
+        // if(health.curValue < 0f)
+        // {
+        //     Die();
+        // }
     }
     public void StartInfiniteStamina(float time)
     {

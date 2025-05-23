@@ -15,9 +15,11 @@ MonoBehaviour:
   displayName: "\uC0AC\uACFC"
   description: "10\uCD08\uB3D9\uC548 \uB354\uBE14\uC810\uD504\uAC00 \uAC00\uB2A5\uD574\uC9D1\uB2C8\uB2E4."
   type: 2
-  icon: {fileID: 0}
-  dropPrefab: {fileID: 0}
-  canStack: 0
-  maxStackAmount: 0
+  icon: {fileID: 21300000, guid: 4e51a1003bc27fe4caae1ed5074a3d76, type: 3}
+  dropPrefab: {fileID: 6765847272201318397, guid: 7372febb8e0363a499bb0453433a5344, type: 3}
+  canStack: 1
+  maxStackAmount: 3
   time: 10
-  consumables: []
+  consumables:
+  - type: 1
+    value: 10
