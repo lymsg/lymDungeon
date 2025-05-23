@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     
     [Header("Jump")]
     public float jumpStamina;
+    public bool doubleJumpAble;
+    public bool isDoubleJump;
 
     [Header("Run")]
     public float runSpeed;
@@ -59,6 +61,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         IsGrounded();
+        
+        if (IsGrounded()) isDoubleJump = false;
+        
         if (isRunning)
         {
             if (curMovementInput.magnitude > 0f)
@@ -129,6 +134,15 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
             Debug.Log("Jump");
+        }
+        if (context.phase == InputActionPhase.Started && doubleJumpAble && !IsGrounded()) //더블점프가 가능한상태고 공중일때
+        {
+            if (!isDoubleJump && CharacterManager.Instance.Player.condition.useStamina(jumpStamina))
+            {
+                rb.AddForce(Vector2.up * jumpPower, ForceMode.Impulse);
+                Debug.Log("doubleJump");
+                isDoubleJump = true;
+            }
         }
     }
 
@@ -250,10 +264,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             ExitClimbigMode();
-            if (!isThirdPerson)
-            {
-                mainCamera.localPosition = firstPersonView;
-            }
         }
     }
 
@@ -278,5 +288,25 @@ public class PlayerController : MonoBehaviour
     {
         ClimbingMode = false;
         rb.useGravity = true;
+        if (!isThirdPerson)
+        {
+            mainCamera.localPosition = firstPersonView;
+        }
+    }
+
+    private IEnumerator OnDoubleJump(float time)
+    {
+        float startTime = 0f;
+        while (startTime < time)
+        {
+            startTime += Time.deltaTime;
+            doubleJumpAble = true;
+            yield return null;
+        }
+        doubleJumpAble = false;
+    }
+    public void StartOnDoubleJump(float time)
+    {
+        StartCoroutine(OnDoubleJump(time));
     }
 }

@@ -28,6 +28,9 @@ public class ItemObject : MonoBehaviour, IInteractable
                 case "초록토마토":
                     CharacterManager.Instance.Player.condition.StartInfiniteStamina(data.time);
                     break;
+				case "사과":
+                    CharacterManager.Instance.Player.controller.StartOnDoubleJump(data.time);
+                    break;
                     
             }
         }
