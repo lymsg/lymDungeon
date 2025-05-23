@@ -59,4 +59,22 @@ public class PlayerCondition : MonoBehaviour
 
         stamina.uiBar.color = new Color32(66, 117, 5, 255);
     }
+    
+    public void AddBonusHealth(float amount)
+    {
+        health.curValue += amount;
+        if (health.curValue > health.maxValue)
+        {
+            uiCondition.AddBonusBarUi();
+        }
+    }
+
+    public void RemoveBonusHealth(float amount)
+    {
+        health.curValue -= amount;
+        if (health.curValue <= health.maxValue)
+        {
+            uiCondition.RemoveBonusBarUi();
+        }
+    }
 }

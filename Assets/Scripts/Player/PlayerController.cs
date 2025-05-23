@@ -320,4 +320,13 @@ public class PlayerController : MonoBehaviour
     {
         StartCoroutine(OnDoubleJump(time));
     }
+    
+    public void DecreaseSpeed(float amount)
+    {
+        moveSpeed -= amount;
+    }
+    public void UnDecreaseSpeed(float amount)
+    {
+        moveSpeed += amount;
+    }
 }

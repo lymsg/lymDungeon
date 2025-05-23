@@ -23,5 +23,14 @@ public class UICondition : MonoBehaviour
                 doubleJumpIcon.gameObject.SetActive(false);
             }
         }
+        public void AddBonusBarUi()
+        {
+            health.bonusBar?.gameObject.SetActive(true);
+        }
+
+        public void RemoveBonusBarUi()
+        {
+            health.bonusBar?.gameObject.SetActive(false);
+        }
     }
 

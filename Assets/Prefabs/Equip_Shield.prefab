@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7361446935610565065}
   - component: {fileID: 2586409535007691532}
   - component: {fileID: 7435786266480949232}
+  - component: {fileID: 3701558693708047144}
   m_Layer: 7
   m_Name: Equip_Shield
   m_TagString: Untagged
@@ -27,14 +28,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7025465664395022279}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.9960905, z: -0, w: 0.08833911}
-  m_LocalPosition: {x: 6.989, y: 1.378, z: -6.663}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6127813441173326909}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 169.864, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!54 &7361446935610565065
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -96,6 +97,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: a834dceed20cd6147b1aafa6ecb1b724, type: 2}
+--- !u!114 &3701558693708047144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7025465664395022279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cf9b5b38e846b48b20083f0b8854d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BonusHealth: 100
+  decreaseSpeed: 2
 --- !u!1 &8834962112164143639
 GameObject:
   m_ObjectHideFlags: 0
